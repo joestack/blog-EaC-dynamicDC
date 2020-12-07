@@ -78,30 +78,30 @@ Schließlich will man mit diesem Fundament den Lifecycle von hunderten bis tause
 
 Mit den folgenden 5 Tools möchte ich das Fundament eines dynamischen Datacenters beschreiben, mit denen sich alle technischen und prozessualen Anforderungen erfüllen lassen: 
 
-<img src="./images/0vcs.png" width=250>
+<img src="./images/0vcs.png" width=300>
 
 Das VCS ist die Grundlage zur Generierung, Versionierung, Dokumentation und Automatisierung des Business Values. Mit Hilfe eines VCS kann definiert werden, wer Lese- und/oder Schreibberechtigung auf ein Repository innerhalb des VCS hat. Das VCS ist damit unverzichtbarer Bestandteil bei der Erstellung von kodifizierten Artefakten durch Teams.
 
-<img src="./images/0terraform.png" width=250>
+<img src="./images/0terraform.png" width=300>
 
 Terraform ist das weltweit am meisten genutzte Tool zur Automatisierung von “Infrastructure as Code” (IaC). Die einheitliche und leicht zu verstehende Konfigurations-Sprache ermöglicht die kodifizierte Nutzung nahezu aller Cloud Provider, sowie aller hier dargestellten Tools. Der Lifecycle von Ressourcen hunderter oder tausender unterschiedlicher Applikationen bzw. Workloads lässt sich damit in einem einheitlichen Workflow abbilden. Mittels “Policy as Code” lassen sich die eigenen organisationsspezifischen Sicherheitsanforderungen global oder auch individuell pro Workload, automatisiert umsetzen. Terraform Enterprise kann außerdem als CI/CD Tool für die einzelnen Workloads genutzt oder durch externe CI/CD Tools gesteuert werden.
 Terraform ist in der Gestaltung eines IaC Workflows sehr flexibel, da es sich mit sämtlichen Technologien verbinden lässt. 
 
 
-<img src="./images/0vault.png" width=250>
+<img src="./images/0vault.png" width=300>
 
 Vault ist ein zentralisiertes “Secrets Management System”. Es ermöglicht über die Verifizierung der Identität den temporären Zugriff auf Secrets. Ein Prozess, eine Applikation oder Person müssen sich zuerst authentifizieren, bevor diese den einmaligen oder zeitlich begrenzten Zugriff auf ein Secret erhalten - ähnlich wie beim Einchecken in einem Hotel, in dem man statt eines Schlüssels eine Key-Card zum Öffnen des Zimmers erhält. 
 Vault stellt des weiteren ein Zertifikatsmanagement System (PKI) zur Verfügung. Damit lässt sich die Identität eines Services oder einer Applikation automatisch überprüfen. Denn die verifizierte Identität ist in einer dynamischen Cloud-Umgebung die Grundlage zur Autorisierung, die unabhängig von den zugrundeliegenden IP-Adressen ist. 
 
 
-<img src="./images/0consul.png" width=250>
+<img src="./images/0consul.png" width=300>
 
 Sowohl die Anzahl der zu einem Service gehörenden Instanzen, als auch die Cloud- Region oder der verwendete Cloud-Provider, sind in einem dynamischen Datacenter unbeständig. Consul ist ein “Service Registry” an dem sich die einzelnen zu einem Service gehörenden Instanzen (z.B. Web oder Database) registrieren. Nach erfolgreicher Überprüfung der Identität einer Instanz mittels PKI hat Consul eine globale Sicht über die einzelnen Services und die beteiligten Instanzen sowie deren aktuelle IP-Adressen. Consul entkoppelt damit die Services von ihren IP-Adressen und nutzt 
 stattdessen den logischen Service-Namen.
 Auf Basis dieser “Service Registry”-Informationen kann man nun definieren, welche Services untereinander kommunizieren dürfen. Dies erweitert den Funktionsumfang von Consul zu einem “Service Mesh”, bei dem nur explizit erlaubte Services untereinander eine TLS-verschlüsselte Verbindung aufbauen können. Die Autorisierung  erfolgt somit unabhängig von den zugrundeliegenden IP-Adressen, der aktuellen Anzahl von Service- Instanzen und vor allem über die Grenzen eines Cloud-Providers hinweg. 
 
 
-<img src="./images/0nomad.png" width=250>
+<img src="./images/0nomad.png" width=300>
 
 Nomad ist ein Workload-Orchestrator, der es ermöglicht, Applikationen über Regionsgrenzen von Private oder Public Cloud hinaus auszurollen, zu managen und zu skalieren. Dabei ist es egal, ob die Applikation containerisiert ist, auf einer virtuellen Maschine oder klassischer Hardware läuft. Nomad unterstützt sämtliche Technologien und wurde bereits mit der Orchestrierung von einer Million Containern erfolgreich getestet.
 
