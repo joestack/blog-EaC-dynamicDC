@@ -78,4 +78,46 @@ Schließlich will man mit diesem Fundament den Lifecycle von hunderten bis tause
 
 Mit den folgenden 5 Tools möchte ich das Fundament eines dynamischen Datacenters beschreiben, mit denen sich alle technischen und prozessualen Anforderungen erfüllen lassen: 
 
-![vcs](./images/0vcs.png | =200x200)
+<img src="./images/0vcs.png" width=250>
+
+Das VCS ist die Grundlage zur Generierung, Versionierung, Dokumentation und Automatisierung des Business Values. Mit Hilfe eines VCS kann definiert werden, wer Lese- und/oder Schreibberechtigung auf ein Repository innerhalb des VCS hat. Das VCS ist damit unverzichtbarer Bestandteil bei der Erstellung von kodifizierten Artefakten durch Teams.
+
+<img src="./images/0terraform.png" width=250>
+
+Terraform ist das weltweit am meisten genutzte Tool zur Automatisierung von “Infrastructure as Code” (IaC). Die einheitliche und leicht zu verstehende Konfigurations-Sprache ermöglicht die kodifizierte Nutzung nahezu aller Cloud Provider, sowie aller hier dargestellten Tools. Der Lifecycle von Ressourcen hunderter oder tausender unterschiedlicher Applikationen bzw. Workloads lässt sich damit in einem einheitlichen Workflow abbilden. Mittels “Policy as Code” lassen sich die eigenen organisationsspezifischen Sicherheitsanforderungen global oder auch individuell pro Workload, automatisiert umsetzen. Terraform Enterprise kann außerdem als CI/CD Tool für die einzelnen Workloads genutzt oder durch externe CI/CD Tools gesteuert werden.
+Terraform ist in der Gestaltung eines IaC Workflows sehr flexibel, da es sich mit sämtlichen Technologien verbinden lässt. 
+
+
+<img src="./images/0vault.png" width=250>
+
+Vault ist ein zentralisiertes “Secrets Management System”. Es ermöglicht über die Verifizierung der Identität den temporären Zugriff auf Secrets. Ein Prozess, eine Applikation oder Person müssen sich zuerst authentifizieren, bevor diese den einmaligen oder zeitlich begrenzten Zugriff auf ein Secret erhalten - ähnlich wie beim Einchecken in einem Hotel, in dem man statt eines Schlüssels eine Key-Card zum Öffnen des Zimmers erhält. 
+Vault stellt des weiteren ein Zertifikatsmanagement System (PKI) zur Verfügung. Damit lässt sich die Identität eines Services oder einer Applikation automatisch überprüfen. Denn die verifizierte Identität ist in einer dynamischen Cloud-Umgebung die Grundlage zur Autorisierung, die unabhängig von den zugrundeliegenden IP-Adressen ist. 
+
+
+<img src="./images/0consul.png" width=250>
+
+Sowohl die Anzahl der zu einem Service gehörenden Instanzen, als auch die Cloud- Region oder der verwendete Cloud-Provider, sind in einem dynamischen Datacenter unbeständig. Consul ist ein “Service Registry” an dem sich die einzelnen zu einem Service gehörenden Instanzen (z.B. Web oder Database) registrieren. Nach erfolgreicher Überprüfung der Identität einer Instanz mittels PKI hat Consul eine globale Sicht über die einzelnen Services und die beteiligten Instanzen sowie deren aktuelle IP-Adressen. Consul entkoppelt damit die Services von ihren IP-Adressen und nutzt 
+stattdessen den logischen Service-Namen.
+Auf Basis dieser “Service Registry”-Informationen kann man nun definieren, welche Services untereinander kommunizieren dürfen. Dies erweitert den Funktionsumfang von Consul zu einem “Service Mesh”, bei dem nur explizit erlaubte Services untereinander eine TLS-verschlüsselte Verbindung aufbauen können. Die Autorisierung  erfolgt somit unabhängig von den zugrundeliegenden IP-Adressen, der aktuellen Anzahl von Service- Instanzen und vor allem über die Grenzen eines Cloud-Providers hinweg. 
+
+
+<img src="./images/0nomad.png" width=250>
+
+Nomad ist ein Workload-Orchestrator, der es ermöglicht, Applikationen über Regionsgrenzen von Private oder Public Cloud hinaus auszurollen, zu managen und zu skalieren. Dabei ist es egal, ob die Applikation containerisiert ist, auf einer virtuellen Maschine oder klassischer Hardware läuft. Nomad unterstützt sämtliche Technologien und wurde bereits mit der Orchestrierung von einer Million Containern erfolgreich getestet.
+
+![Dynamic Datacenter](./images/06dyndc.png)
+
+Mit der Erweiterung des prozessualen Schaubildes um die aufgeführten Tools hat man bereits alles, was ein dynamisches Datacenter ausmacht. Die Erzeugung einer Applikation bzw. eines Business Values kann genauso auf die unterschiedlichen Teams aufgeteilt werden, wie es innerhalb der eigenen Organisation erforderlich ist (Segregation of Duties).     
+Das Ergebnis der einzelnen Teams ist nicht länger ein manuelles Produkt, welches sich nicht automatisiert reproduzieren lässt, sondern das Resultat aus einem automatisierten CI/CD Prozess. Die Grundlage zur Automatisierung ist die kodifizierte Beschreibung (Infrastructure as Code), deren Entstehung mit Hilfe des “Version Control System” koordiniert wird. Die Aktualisierung einer kodifizierten Version triggert den mittels Terraform-Enterprise abgebildeten CI/CD Prozess. Dieser kann für jeden Workflow individualisiert werden und somit den Anforderungen an die unterschiedlichen Applikationen oder Stages (Dev, Test, Prod) angepasst werden. Des Weiteren abstrahiert Terraform die heterogenen Ressourcen der unterschiedlichen Private und Public Cloud-Providern, sowie die Nutzung der genannten Tools (Vault, Consul, Nomad, VCS) in eine einheitliche “Infrastructure as Code”-Sprache. Dadurch kann man mit diesem dynamischen Datacenter den Lifecycle tausender unterschiedlicher Workloads mit einem einheitlichen aber individualisierbaren Workflow adressieren. 
+
+## Fazit
+
+Die gestiegenen Anforderungen an die Unternehmens-IT lassen sich im Cloud-Zeitalter nicht mit den Konzepten aus dem Blech-Zeitalter bedienen. Die Arbeitsorganisation mittels ITIL-basiertem Ticket-System mit manuellen Wasserfall-Prozessen ist ein relevanter Engpassfaktor, der eine verbesserte “Time to Value” behindert. Daher ist die digitale Transformation der Unternehmens-IT nicht allein durch die Auswahl geeigneter Tools zu lösen. Vielmehr erfordert es einen ganzheitlichen Ansatz, der Prozesse sowie Mitarbeiterinnen und Mitarbeiter einbezieht. Gerade der Technologie-Sektor ist einem stetigen Wandel ausgesetzt, was eine Bereitschaft zu Veränderung und zum Erlernen von neuem Wissen unabdingbar macht. Ein Festhalten an Gewohntem ist dabei allzu häufig Ausdruck einer falsch verstandenen Tradition. Tradition ist nicht die Anbetung der Asche, sondern die Weitergabe des Feuers. Die Veränderung der Unternehmens-IT zu einem flexiblen und dynamischen Datacenter ist somit eine Chance, gewohnte Strukturen und Prozesse den veränderten Anforderungen entsprechend auszurichten. Denn Multi-Cloud ist mit Sicherheit machbar und wird bereits von einer Vielzahl der globalen Top 500 Unternehmen mit den Tools von HashiCorp umgesetzt.
+
+
+
+Weitere Infos unter:
+
+https://www.hashicorp.com/
+
+https://www.it-business.de/hardware-ist-auch-nur-software-a-977374/
